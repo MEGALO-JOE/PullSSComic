@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
-
 import scrapy
 
-from ..items import SscomicItem
+from scrapy_splash import SplashRequest
 
 
 class FzdmSpider(scrapy.Spider):
     name = 'fzdm_demo'
-    allowed_domains = ['fzdm.com']
+    allowed_domains = ['fzdm.com', 'manhuapan.com']
     start_urls = ['https://manhua.fzdm.com/07/']
 
     base_url = 'https://manhua.fzdm.com/07/{}/'
@@ -28,15 +27,19 @@ class FzdmSpider(scrapy.Spider):
         #     yield scrapy.Request(url=s_item['href'], callback=self.parse_chapter,
         #                          cb_kwargs={"item": s_item})  # 访问各个章节详情
 
-        yield scrapy.Request(url="https://manhua.fzdm.com/07/684/", callback=self.parse_chapter)
+        back = yield scrapy.Request(url="https://manhua.fzdm.com/07/684/", callback=self.parse_chapter)
+        print("_____________________back___________________________", back)
 
     def parse_chapter(self, response):
+        yield "hahahh"
         hrefs = []
         # tmp = True
         # while tmp:
 
         href_list = response.xpath("//div[@class='navigation']/a/@href").extract()  # 章节中的图片
-        list(set(href_list)).sort()
+        href_list = list(set(href_list))
+        href_list.sort()
+        print("_____________________________href______________________", href_list)
         hrefs.extend(href_list)
         for i in href_list:
             if ".html" not in i:
@@ -44,19 +47,27 @@ class FzdmSpider(scrapy.Spider):
 
             url = "https://manhua.fzdm.com/07/684/" + i
             print("__________________url______________________", url)
-            yield scrapy.Request(url=url, callback=self.parse_detail)
-
+            yield SplashRequest(url=url, callback=self.parse_detail)
 
     def parse_detail(self, response):
+        """
         # 进去详情
-        src = response.xpath("//img[@id='mhpic']/@src").extract_first()  # 图片地址  #todo 一直不能获取到数据？？？
+        # todo 使用scrapy-splash，获取js生成后的html画面
+        see ： https://blog.csdn.net/zhengxiangwen/article/details/55227368
+        :param response:
+        :return:
+        """
+        src = response.xpath("//img[@id='mhpic']/@src").extract_first()  # 图片地址
         print("_________________________src___________________", src)
         yield scrapy.Request(url=src, callback=self.parse_image)
 
     def parse_image(self, response):
         """ 处理图片保存 """
 
+        # todo 怎么进不来？？？
+
         print("____________________save___________________")
+
 
         image_file = response.url[-15:]
 
