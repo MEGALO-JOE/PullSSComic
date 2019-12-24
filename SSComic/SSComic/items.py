@@ -14,8 +14,7 @@ class SscomicItem(scrapy.Item):
     title = scrapy.Field()
     href = scrapy.Field()
     info = scrapy.Field()
-    url = scrapy.Field()
     save_path = scrapy.Field()
-    err = scrapy.Field()
+    image_file = scrapy.Field()
 
 
