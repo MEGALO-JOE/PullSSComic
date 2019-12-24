@@ -19,7 +19,7 @@ class FzdmSpider(scrapy.Spider):
     juan = [base_url.format(f"Vol_0{i}") for i in [f"0{i}" if len(str(i)) == 1 else i for i in range(1, 26)]]
     start_urls = hua + juan
 
-    # start_urls = ['https://manhua.fzdm.com/1/704/index_0.html']
+    # start_urls = ['https://manhua.fzdm.com/1/702/index_0.html']
 
     def start_requests(self):
         for url in self.start_urls:
