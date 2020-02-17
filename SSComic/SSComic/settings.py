@@ -22,8 +22,8 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Ge
 ROBOTSTXT_OBEY = False
 
 LOG_LEVEL = "INFO"
-LOG_FILE = "./log.txt"
-LOG_STDOUT = True # 把print 输入到日志中
+# LOG_FILE = "./log.txt"
+#LOG_STDOUT = True # 把print 输入到日志中
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 CONCURRENT_REQUESTS = 64

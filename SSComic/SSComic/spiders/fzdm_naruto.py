@@ -13,13 +13,13 @@ class FzdmSpider(scrapy.Spider):
     name = 'naruto'
     allowed_domains = ['fzdm.com', 'manhuapan.com']
 
-    global base_url
-    base_url = 'https://manhua.fzdm.com/1/{}/index_0.html'
-    hua = [base_url.format(i) for i in range(227, 701)]
-    juan = [base_url.format(f"Vol_0{i}") for i in [f"0{i}" if len(str(i)) == 1 else i for i in range(1, 26)]]
-    start_urls = hua + juan
+    # global base_url
+    # base_url = 'https://manhua.fzdm.com/1/{}/index_0.html'
+    # hua = [base_url.format(i) for i in range(227, 701)]
+    # juan = [base_url.format(f"Vol_0{i}") for i in [f"0{i}" if len(str(i)) == 1 else i for i in range(1, 26)]]
+    # start_urls = hua + juan
 
-    # start_urls = ['https://manhua.fzdm.com/1/702/index_0.html']
+    start_urls = ['https://manhua.fzdm.com/1/612/index_0.html']
 
     def start_requests(self):
         for url in self.start_urls:
