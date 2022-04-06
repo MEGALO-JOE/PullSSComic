@@ -46,7 +46,7 @@ scrapyd-client==1.1.0
 service-identity==18.1.0
 six==1.13.0
 traitlets==4.3.3
-Twisted==19.10.0
+Twisted==22.2.0
 ujson==1.35
 urllib3==1.25.7
 w3lib==1.21.0
