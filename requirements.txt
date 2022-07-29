@@ -38,7 +38,7 @@ python-jsonrpc-server==0.3.2
 python-language-server==0.31.2
 queuelib==1.5.0
 requests==2.22.0
-Scrapy==1.7.3
+Scrapy==2.6.2
 scrapy-proxies==0.4
 scrapy-splash==0.7.2
 scrapyd==1.2.1
